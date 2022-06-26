@@ -1,3 +1,4 @@
+mod expenses;
 mod groups;
 pub mod model;
 
