@@ -1,7 +1,8 @@
 use mongodb::bson::{DateTime, Uuid};
 use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
 
-pub type Amount = u64;
+pub type Amount = i64;
 
 #[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
 pub struct User {
@@ -33,4 +34,10 @@ pub struct Group {
     pub description: String,
     pub users: Vec<User>,
     pub expenses: Vec<Expense>,
+}
+
+#[derive(Clone, Debug, PartialEq, Deserialize, Serialize)]
+pub struct GroupMember {
+    pub user_uuid: Uuid,
+    pub owes: HashMap<Uuid, Amount>,
 }
